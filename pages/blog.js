@@ -3,6 +3,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import Head from 'next/head';
+import React from 'react';
+
 
 export async function getStaticProps() {
   const files = fs.readdirSync(path.join('posts'));

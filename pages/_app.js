@@ -1,9 +1,8 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import * as gtag from '../lib/gtag';
-import '../styles/globals.css';
-
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -39,6 +38,11 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
 
 export default MyApp;
 
