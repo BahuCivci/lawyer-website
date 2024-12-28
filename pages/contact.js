@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Contact() {
+const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
@@ -65,4 +65,6 @@ export default function Contact() {
       {successMessage && <p className="text-green-500 mt-4">{successMessage}</p>}
     </div>
   );
-}
+};
+
+export default Contact;
