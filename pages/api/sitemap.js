@@ -1,35 +1,24 @@
-import fs from 'fs';
-import path from 'path';
+const BASE_URL = 'https://www.aysegulcivci.com';
 
 export default function handler(req, res) {
-  const BASE_URL = 'https://www.aysegulcivci.com';
-  const postsDirectory = path.join(process.cwd(), 'posts');
-  const filenames = fs.readdirSync(postsDirectory);
+  const staticPages = [
+    '/about',
+    '/services',
+    '/contact',
+    '/blog',
+  ];
 
-  const urls = filenames.map(filename => {
-    const slug = filename.replace('.md', '');
-    return `${BASE_URL}/blog/${slug}`;
+  const urls = staticPages.map((page) => {
+    return `<url><loc>${BASE_URL}${page}</loc></url>`;
   });
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-      <loc>${BASE_URL}/</loc>
-    </url>
-    <url>
-      <loc>${BASE_URL}/about</loc>
-    </url>
-    <url>
-      <loc>${BASE_URL}/services</loc>
-    </url>
-    <url>
-      <loc>${BASE_URL}/contact</loc>
-    </url>
-    ${urls.map(url => `<url><loc>${url}</loc></url>`).join('')}
+    <url><loc>${BASE_URL}/</loc></url>
+    ${urls.join('')}
   </urlset>`;
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(sitemap);
   res.end();
 }
-

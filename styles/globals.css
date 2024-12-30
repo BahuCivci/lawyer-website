@@ -2,20 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Genel sıfırlamalar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body, html {
+  height: 100%; /* Sayfa yüksekliğini tam ekran yap */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Yatay kaydırmayı engelle */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Sayfa boyunu tam ekran yap */
+}
+
+main {
+  flex: 1; /* Ana içeriğin kalan boşluğu doldurmasını sağlar */
+}
+
+footer {
+  background-color: #1f2937; /* Koyu gri */
+  color: #9ca3af; /* Açık gri */
+  padding: 1rem;
+  text-align: center;
+}
+
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+h2 {
+  @apply text-2xl font-semibold;
+}
+
+p {
+  @apply text-gray-700;
+}
+
+button {
+  @apply px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600;
+}
+
+nav a {
+  color: #1d4ed8; /* Varsayılan link rengi */
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #2563eb; /* Üzerine gelince */
+}
+
+nav a:active {
+  color: #1e40af; /* Tıklanırken */
+}
+
+nav a:visited {
+  color: #1d4ed8; /* Ziyaret edilmiş link için aynı renk */
 }

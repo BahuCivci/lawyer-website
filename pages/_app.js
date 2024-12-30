@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import * as gtag from '../lib/gtag';
 import PropTypes from 'prop-types';
+import '../styles/globals.css';
+
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();

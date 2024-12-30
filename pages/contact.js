@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const validate = () => {
     let tempErrors = {};
@@ -14,13 +16,32 @@ const Contact = () => {
     return tempErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const tempErrors = validate();
     if (Object.keys(tempErrors).length === 0) {
-      setSuccessMessage('Mesajınız başarıyla gönderildi!');
-      setErrors({});
-      setFormData({ name: '', email: '', message: '' });
+      try {
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        };
+
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          templateParams,
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        );
+
+        setSuccessMessage('Mesajınız başarıyla gönderildi!');
+        setErrors({});
+        setFormData({ name: '', email: '', message: '' });
+        setErrorMessage('');
+      } catch (error) {
+        setErrorMessage('Mesaj gönderilemedi. Lütfen tekrar deneyin.');
+        console.error('Email gönderme hatası:', error);
+      }
     } else {
       setErrors(tempErrors);
       setSuccessMessage('');
@@ -63,6 +84,7 @@ const Contact = () => {
         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">Gönder</button>
       </form>
       {successMessage && <p className="text-green-500 mt-4">{successMessage}</p>}
+      {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
     </div>
   );
 };

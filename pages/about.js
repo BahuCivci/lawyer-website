@@ -1,11 +1,32 @@
-import React from 'react';
+import Head from 'next/head';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 p-8">
-      <h1 className="text-2xl font-bold">Hakkımızda</h1>
-      <p className="mt-4 text-gray-700">Ayşegül Civci, ceza hukuku, aile hukuku, marka hukuku ve bilişim hukuku alanlarında uzmanlaşmıştır. Profesyonel ve güvenilir hizmetler sunar.</p>
-    </div>
+    <>
+      <Head>
+        <title>Avukat Ayşegül Civci | Hukuki Danışmanlık</title>
+        <meta name="description" content="Ceza, aile, marka hukuku ve daha birçok alanda uzman avukatlık hizmetleri sunuyoruz." />
+        <meta name="keywords" content="Avukat, Hukuk, Danışmanlık, Ceza Hukuku, Aile Hukuku, Eskişehir Avukat" />
+        <meta name="author" content="Ayşegül Civci" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Avukat Ayşegül Civci | Hukuki Danışmanlık" />
+        <meta property="og:description" content="Profesyonel avukatlık hizmetleri ile hukuki danışmanlık." />
+        <meta property="og:image" content="/profile.jpg" />
+        <meta property="og:url" content="https://www.aysegulcivci.com" />
+        <meta property="og:type" content="website" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.aysegulcivci.com" />
+      </Head>
+
+
+      <main className="p-8">
+        <h1 className="text-3xl font-bold">Hakkımızda</h1>
+        <p>Biz, hukuki danışmanlık ve dava süreçlerinde size destek olan bir avukatlık ofisiyiz.</p>
+      </main>
+    </>
   );
 };
 
