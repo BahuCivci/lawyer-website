@@ -44,7 +44,7 @@ const Home = () => {
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-700"
           >
-            Haritayı Google Maps'te Görüntüle
+            Haritayı Google Maps&aposte Görüntüle
           </a>
         </div>
       </main>
