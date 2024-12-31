@@ -46,6 +46,10 @@ const Header = () => {
         <Link href="/blog" onClick={closeMenu} className="block py-2 px-4 text-blue-500 hover:text-blue-600 active:text-blue-700">
           Blog
         </Link>
+        <Link href="/faq" onClick={closeMenu} className="block py-2 px-4 text-blue-500 hover:text-blue-600 active:text-blue-700">
+          Sıkça Sorulan Sorular
+        </Link>
+
       </nav>
     </header>
   );
